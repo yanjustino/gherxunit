@@ -1,8 +1,7 @@
 # GherXUnit
-
+[🇧🇷 Versão em Português](README_PTBR.md) | [🇬🇧 English Version](README.md)
 > [!IMPORTANT]  
 > VERSÃO 1.0.0-beta
-
 
 ## Introdução
 Behavior-Driven Development (BDD) é uma metodologia ágil amplamente utilizada para especificação e validação de requisitos 
