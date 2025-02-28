@@ -1,5 +1,4 @@
 # GherXUnit
-**VERSÃO 1.0.0-Beta**  
 
 > [!IMPORTANT]  
 > VERSÃO 1.0.0-beta
