@@ -1,35 +1,38 @@
 # GherXUnit
-
+[🇧🇷 Versão em Português](README_PTBR.md) | [🇬🇧 English Version](README.md)
 > [!IMPORTANT]  
-> VERSÃO 1.0.0-beta
+> VERSION 1.0.0-beta
 
-GherXUnit is a superset of xUnit used for writing test scenarios using the Gherkin structure. It allows you to define features, rules, examples, steps, backgrounds, and scenario outlines in a readable and structured format.
-O GherXUnit é considerado um superset do xUnit porque ele estende a funcionalidade do framework de testes xUnit incorporando a sintaxe Gherkin para a escrita de cenários de teste.
-Isso significa que o GherXUnit inclui todas as funcionalidades do xUnit e adiciona novas capacidades para definir features, regras, exemplos, passos, backgrounds e outlines de cenários de uma forma estruturada e legível.
-Ele melhora o framework base xUnit sem alterar seu comportamento central, tornando-o um superset.
+## Introduction
+Behavior-Driven Development (BDD) is an agile methodology widely used for software requirements specification and validation, promoting clearer communication between technical and non-technical stakeholders. However, despite its benefits, some challenges are frequently reported, such as difficulties in test automation, scenario maintenance, and integration with traditional unit testing frameworks.
 
-### Superset vs. Biblioteca
+GherXUnit emerges as a viable alternative for those seeking an approach that combines the expressiveness of BDD with the well-established structure of xUnit. By allowing test scenarios to be written using Gherkin syntax within a unit testing framework, GherXUnit provides an option for teams looking to leverage the benefits of BDD without sacrificing the familiarity and efficiency of xUnit. While it does not solve all inherent BDD challenges, GherXUnit aims to offer a more integrated and flexible experience for defining and executing tests.
+
+## Superset vs. Library
+GherXUnit is a superset of xUnit used for writing test scenarios using the Gherkin structure. It allows defining features, rules, examples, steps, backgrounds, and scenario outlines in a readable and structured format.
+
+GherXUnit is considered a superset of xUnit because it extends the functionality of the xUnit testing framework by incorporating Gherkin syntax for writing test scenarios. This means that GherXUnit includes all xUnit functionalities and adds new capabilities for defining features, rules, examples, steps, backgrounds, and scenario outlines in a structured and readable manner. It enhances the base xUnit framework without altering its core behavior, making it a superset.
 
 **Superset:**
-- Um superset é uma extensão de um sistema ou framework existente que adiciona novas funcionalidades ou capacidades, mantendo a compatibilidade com o sistema original.
-- Ele se baseia na funcionalidade base, fornecendo ferramentas e melhorias adicionais sem alterar o comportamento central.
+- A superset is an extension of an existing system or framework that adds new functionalities or capabilities while maintaining compatibility with the original system.
+- It builds on the base functionality, providing additional tools and improvements without changing the core behavior.
 
-**Biblioteca:**
-- Uma biblioteca é uma coleção de código pré-escrito que os desenvolvedores podem usar para realizar tarefas comuns, como manipulação de estruturas de dados, fazer requisições de rede ou realizar cálculos matemáticos.
-- Ela fornece funções e classes reutilizáveis que podem ser integradas em vários projetos para simplificar o desenvolvimento.
+**Library:**
+- A library is a collection of pre-written code that developers can use to perform common tasks such as data structure manipulation, network requests, or mathematical calculations.
+- It provides reusable functions and classes that can be integrated into various projects to simplify development.
 
-## Uso do GherXUnit
+## Using GherXUnit
 
-### Seperação de responsabilidades:
-No contexto do GherXUnit, a palavra-chave `partial` é usada para definir classes parciais. Isso permite que a definição de uma classe seja dividida em vários arquivos. Cada parte da classe é combinada pelo compilador em uma única definição de classe.
+### Separation of Responsibilities:
+In the context of GherXUnit, the `partial` keyword is used to define partial classes. This allows a class definition to be split across multiple files. Each part of the class is combined by the compiler into a single class definition.
 
-1. **Organização do Código**: Permite separar a lógica de diferentes aspectos de uma classe em arquivos distintos, facilitando a manutenção e a leitura do código.
-2. **Colaboração**: Facilita o trabalho em equipe, pois diferentes desenvolvedores podem trabalhar em diferentes partes da mesma classe sem causar conflitos.
-3. **Separação de Preocupações**: Permite separar a definição de atributos, métodos e lógica de teste em arquivos diferentes, mantendo o código mais limpo e organizado.
+1. **Code Organization**: Enables separating the logic of different aspects of a class into distinct files, making maintenance and readability easier.
+2. **Collaboration**: Facilitates teamwork, as different developers can work on different parts of the same class without conflicts.
+3. **Separation of Concerns**: Allows attributes, methods, and test logic to be defined in separate files, keeping the code cleaner and more organized.
 
-### Exemplo de uso no GherXUnit:
+### Example Usage in GherXUnit:
 
-#### Arquivo `SubscriptionTest.cs`
+#### File `SubscriptionTest.cs`
 ```csharp
 namespace GherXUnit.Annotations.Samples.Features;
 
@@ -46,7 +49,7 @@ public partial class SubscriptionTest
 }
 ```
 
-#### Arquivo `SubscriptionTest.Steps.cs`
+#### File `SubscriptionTest.Steps.cs`
 ```csharp
 using Xunit.Abstractions;
 
@@ -58,123 +61,54 @@ public partial class SubscriptionTest(ITestOutputHelper output) : IGherXUnit
 
     private async Task Step01()
     {
-        // Implementação do passo
+        // Step implementation
     }
 }
 ```
 
-Neste exemplo, a classe `SubscriptionTest` é dividida em dois arquivos. O primeiro arquivo define os cenários de teste, enquanto o segundo arquivo define os métodos de passos (`Steps`). O uso de `partial` permite que ambos os arquivos contribuam para a definição da mesma classe `SubscriptionTest`.
+In this example, the `SubscriptionTest` class is divided into two files. The first file defines the test scenarios, while the second file defines the step methods. The use of `partial` allows both files to contribute to the definition of the same `SubscriptionTest` class.
 
 ## Installation
 
-Para incorporar o GherXUnit à sua aplicação, siga os passos abaixo:
+To incorporate GherXUnit into your application, follow these steps:
 
-### 1. Download dos Arquivos
+### 1. Download the Files
 
-Baixe os arquivos necessários diretamente do repositório do GherXUnit. Certifique-se de incluir os seguintes arquivos no seu projeto:
+Download the file [gherxunit-v1.0.0-beta.zip](download/gherxunit-v1.0.0-beta.zip). Ensure you include the following files in your project:
 
 - `src/GherXUnit.Annotations/GherXUnitSteps.cs`
 - `src/GherXUnit.Annotations/GherXUnitAttributes.cs`
 - `src/GherXUnit.Annotations/IGherXUnit.cs`
 
+> [!TIP]  
+> Organize your project by separating scenario definitions, steps, and contexts into distinct files. Use the `partial` keyword to split class definitions across multiple files.
+
+### 2. Defining Features and Scenarios
+
+Create classes to define features and test scenarios. Use the `Feature`, `Scenario`, `Rule`, `Example`, `Background`, and `ScenarioOutline` attributes to structure your tests.
+
+### 3. Running Tests
+
+Implement the step methods and execute tests using the xUnit framework. Use the `Steps` and `StepsAsync` methods to execute scenario steps.
 
 > [!TIP]  
-> Organize seu projeto de forma a separar as definições de cenários, passos e contextos em arquivos distintos. Utilize a palavra-chave `partial` para dividir a definição das classes em múltiplos arquivos.
+> GherXUnit allows writing structured and readable test scenarios using Gherkin syntax. Follow the provided examples to adapt the code to your application and create maintainable and understandable tests.
 
-### 2. Definição de Features e Cenários
+### 4. Execution Output
 
-Crie classes para definir as features e cenários de teste. Utilize os atributos `Feature`, `Scenario`, `Rule`, `Example`, `Background` e `ScenarioOutline` para estruturar seus testes.
-
-#### Exemplo de Definição de Feature e Cenário
-
-Crie um arquivo `SubscriptionTest.cs`:
-
-```csharp
-namespace GherXUnit.Annotations.Samples.Features;
-
-[Feature("Subscribers see different articles based on their subscription level")]
-public partial class SubscriptionTest
-{
-    [Scenario("Free subscribers see only the free articles")]
-    async Task Scenario01() => await this.StepsAsync(Step01,
-        """
-        Given Free Frieda has a free subscription
-        When Free Frieda logs in with her valid credentials
-        Then she sees a Free article
-        """);
-}
-```
-
-### 4. Definição dos Passos
-
-Crie um arquivo separado para definir os métodos que implementam os passos dos cenários.
-
-#### Exemplo de Definição de Passos
-
-Crie um arquivo `SubscriptionTest.Steps.cs`:
-
-```csharp
-using Xunit.Abstractions;
-
-namespace GherXUnit.Annotations.Samples.Features;
-
-public partial class SubscriptionTest(ITestOutputHelper output) : IGherXUnit
-{
-    public ITestOutputHelper Output { get; } = output;
-
-    private async Task Step01()
-    {
-        // Implementação do passo
-    }
-}
-```
-
-### 5. Contexto de Background
-
-Se necessário, defina um contexto para os testes que utilizam `Background`.
-
-#### Exemplo de Definição de Contexto
-
-Crie um arquivo `BackgroundContext.cs`:
-
-```csharp
-namespace GherXUnit.Annotations.Samples.Backgrounds;
-
-public class BackgroundContext
-{
-    public string ContextId { get; } = Guid.NewGuid().ToString();
-    public Dictionary<string, string> OwnersAndBlogs { get; } = new();
-
-    public BackgroundContext()
-    {
-        OwnersAndBlogs.Add("Greg", "Greg's anti-tax rants");
-        OwnersAndBlogs.Add("Dr. Bill", "Expensive Therapy");
-    }
-}
-```
-
-### 6. Execução dos Testes
-
-Implemente os métodos de passos e execute os testes utilizando o framework xUnit. Utilize os métodos `Steps` e `StepsAsync` para executar os passos dos cenários.
-
-> [!TIP]  
-> O GherXUnit permite escrever cenários de teste de forma estruturada e legível utilizando a sintaxe Gherkin. Siga os exemplos fornecidos para adaptar o código à sua aplicação e criar testes compreensíveis e mantíveis.
-
-Teste de sucesso com syntax highlight na IDE:
+Successful test with syntax highlight in the IDE:
 ![img.png](/docs/img.png)
 
-Teste de falha com syntax highlight na IDE:
+Failed test with syntax highlight in the IDE:
 ![img.png](/docs/img02.png)
 
 > [!CAUTION]  
-> O teste do cenário _"Greg posts to a client's blog"_ está intecionalmente falhando para demonstrar a saída de erro.
+> The test for the scenario _"Greg posts to a client's blog"_ is intentionally failing to demonstrate error output.
 
-
-## Palavras-chave do GherXUnit
+## GherXUnit Keywords
 
 ### Feature
-
-A Feature keyword é usada para fornecer uma descrição de alto nível de uma funcionalidade de software e agrupar cenários relacionados.
+The `Feature` keyword is used to provide a high-level description of a software functionality and group related scenarios.
 
 ```csharp
 [Feature("Subscribers see different articles based on their subscription level")]
@@ -186,20 +120,12 @@ public partial class SubscriptionTest
         Given Free Frieda has a free subscription
         When Free Frieda logs in with her valid credentials
         Then she sees a Free article
-        """);
-    
-    [Scenario("Subscriber with a paid subscription can access both free and paid articles")]
-    void Scenario02() => this.Steps(Step02,
-        """
-        Given Paid Patty has a basic-level paid subscription
-        When Paid Patty logs in with her valid credentials
-        Then she sees a Free article and a Paid article
         """);
 }
 ```
 
 ### Rule
-A `Rule` keyword é usada para representar uma regra de negócio que deve ser implementada. Ela agrupa vários cenários que pertencem a essa regra.
+The `Rule` keyword represents a business rule that must be implemented. It groups multiple scenarios related to this rule.
 
 ```csharp
 [Feature("Highlander")]
@@ -219,57 +145,11 @@ public partial class RuleTest
 }
 ```
 
-### Example
-O `Example` keyword é usado para definir um exemplo específico para um cenário.
+## Conclusion
+GherXUnit provides a structured way to write test scenarios using Gherkin syntax, making your tests more readable and maintainable. By using features, rules, examples, steps, backgrounds, and scenario outlines, you can create comprehensive and understandable test cases.
 
+## References
+- **Farooq, M. S., et al.** (2023). *Behavior Driven Development: A Systematic Literature Review*. IEEE Access. DOI: [10.1109/ACCESS.2023.3302356](https://doi.org/10.1109/ACCESS.2023.3302356).
+- **Cucumber**. *Cucumber Documentation*. Available at: [https://cucumber.io/docs](https://cucumber.io/docs).
+- **North, D.** *Introducing BDD*. Available at: [https://dannorth.net/introducing-bdd/](https://dannorth.net/introducing-bdd/).
 
-```csharp
-[Example("There can be only One")]
-void Example02() => this.Steps(
-    """
-    Example: Only One -- One alive
-    Given there is only 1 ninja alive
-    Then they will live forever ;-)
-    """);
-```
-
-### Background
-O `Background` keyword permite adicionar contexto aos cenários que o seguem. Ele contém um ou mais passos `Given`, que são executados antes de cada cenário.
-
-```csharp
-[Feature("Multiple site support")]
-public partial class BackgroundTest
-{
-    [Background]
-    public void Setup() => this.Steps(
-        """
-        Given a global administrator named <<"Greg">>
-        And a blog named <<"Greg's anti-tax rants">>
-        And a customer named <<"Dr. Bill">>
-        And a blog named <<"Expensive Therapy">> owned by <<"Dr. Bill">>
-        """);
-}
-```
-
-### Scenario Outline
-O `Scenario Outline` keyword é usado para executar o mesmo cenário várias vezes com diferentes conjuntos de valores.
-
-
-```csharp
-public partial class ScenarioOutlineTest
-{
-    [ScenarioOutline("eating")]
-    [Examples(12, 05, 07)]
-    [Examples(20, 05, 15)]
-    public async Task Scenario01(int start, int eat, int left) => await this.StepsAsync(Step01, [start, eat, left],
-        $"""
-         Given there are <<{start}>> cucumbers
-         When I eat <<{eat}>> cucumbers
-         Then I should have <<{left}>> cucumbers
-         """);
-}
-```
-
-
-## Conclusão
-GherXunit oferece uma maneira estruturada de escrever cenários de teste usando a sintaxe Gherkin, tornando seus testes mais legíveis e fáceis de manter. Ao usar features, rules, examples, steps, backgrounds e scenario outlines, você pode criar casos de teste abrangentes e compreensíveis.
