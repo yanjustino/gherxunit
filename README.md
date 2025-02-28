@@ -11,15 +11,13 @@ Ele melhora o framework base xUnit sem alterar seu comportamento central, tornan
 
 ### Superset vs. Biblioteca
 
-> [!NOTE]  
-> **Superset:**
-> - Um superset é uma extensão de um sistema ou framework existente que adiciona novas funcionalidades ou capacidades, mantendo a compatibilidade com o sistema original.
-> - Ele se baseia na funcionalidade base, fornecendo ferramentas e melhorias adicionais sem alterar o comportamento central.
+**Superset:**
+- Um superset é uma extensão de um sistema ou framework existente que adiciona novas funcionalidades ou capacidades, mantendo a compatibilidade com o sistema original.
+- Ele se baseia na funcionalidade base, fornecendo ferramentas e melhorias adicionais sem alterar o comportamento central.
 
-> [!NOTE]  
-> **Biblioteca:**
-> - Uma biblioteca é uma coleção de código pré-escrito que os desenvolvedores podem usar para realizar tarefas comuns, como manipulação de estruturas de dados, fazer requisições de rede ou realizar cálculos matemáticos.
-> - Ela fornece funções e classes reutilizáveis que podem ser integradas em vários projetos para simplificar o desenvolvimento.
+**Biblioteca:**
+- Uma biblioteca é uma coleção de código pré-escrito que os desenvolvedores podem usar para realizar tarefas comuns, como manipulação de estruturas de dados, fazer requisições de rede ou realizar cálculos matemáticos.
+- Ela fornece funções e classes reutilizáveis que podem ser integradas em vários projetos para simplificar o desenvolvimento.
 
 ## Uso do GherXUnit
 
