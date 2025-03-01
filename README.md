@@ -108,7 +108,8 @@ Failed test with syntax highlight in the IDE:
 ## GherXUnit Keywords
 
 ### Feature
-The `Feature` keyword is used to provide a high-level description of a software functionality and group related scenarios.
+
+The `Feature` keyword is used to provide a high-level description of a software feature and group related scenarios.
 
 ```csharp
 [Feature("Subscribers see different articles based on their subscription level")]
@@ -121,11 +122,19 @@ public partial class SubscriptionTest
         When Free Frieda logs in with her valid credentials
         Then she sees a Free article
         """);
+    
+    [Scenario("Subscriber with a paid subscription can access both free and paid articles")]
+    void Scenario02() => this.Steps(Step02,
+        """
+        Given Paid Patty has a basic-level paid subscription
+        When Paid Patty logs in with her valid credentials
+        Then she sees a Free article and a Paid article
+        """);
 }
 ```
 
 ### Rule
-The `Rule` keyword represents a business rule that must be implemented. It groups multiple scenarios related to this rule.
+The `Rule` keyword is used to represent a business rule that must be implemented. It groups several scenarios that belong to that rule.
 
 ```csharp
 [Feature("Highlander")]
@@ -142,6 +151,57 @@ public partial class RuleTest
         Then one ninja dies (but not me)
         And there is one ninja less alive
         """);
+}
+```
+
+### Example
+
+The `Example` keyword is used to define a specific example for a scenario.
+
+
+```csharp
+[Example("There can be only One")]
+void Example02() => this.Steps(
+    """
+    Example: Only One -- One alive
+    Given there is only 1 ninja alive
+    Then they will live forever ;-)
+    """);
+```
+
+### Background
+The `Background` keyword allows adding context to the scenarios that follow it. It contains one or more `Given` steps that are executed before each scenario.
+
+```csharp
+[Feature("Multiple site support")]
+public partial class BackgroundTest
+{
+    [Background]
+    public void Setup() => this.Steps(
+        """
+        Given a global administrator named <<"Greg">>
+        And a blog named <<"Greg's anti-tax rants">>
+        And a customer named <<"Dr. Bill">>
+        And a blog named <<"Expensive Therapy">> owned by <<"Dr. Bill">>
+        """);
+}
+```
+
+### Scenario Outline
+The `Scenario Outline` keyword is used to execute the same scenario multiple times with different sets of values.
+
+```csharp
+public partial class ScenarioOutlineTest
+{
+    [ScenarioOutline("eating")]
+    [Examples(12, 05, 07)]
+    [Examples(20, 05, 15)]
+    public async Task Scenario01(int start, int eat, int left) => await this.StepsAsync(Step01, [start, eat, left],
+        $"""
+         Given there are <<{start}>> cucumbers
+         When I eat <<{eat}>> cucumbers
+         Then I should have <<{left}>> cucumbers
+         """);
 }
 ```
 

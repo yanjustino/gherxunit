@@ -180,7 +180,6 @@ Teste de falha com syntax highlight na IDE:
 > [!CAUTION]  
 > O teste do cenário _"Greg posts to a client's blog"_ está intecionalmente falhando para demonstrar a saída de erro.
 
-
 ## Palavras-chave do GherXUnit
 
 ### Feature
